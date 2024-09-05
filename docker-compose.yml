@@ -11,17 +11,14 @@ services:
     environment:
       - NODE_ENV=production
       - DATABASE_URL=postgresql://postgres:password@db:5432/productdb
-      - S3_BUCKET_NAME=your-s3-bucket-name
-      - CLOUDINARY_URL=your-cloudinary-url
+      - S3_BUCKET_NAME=yagyagoel11profilepicture
       - BULLMQ_REDIS_URL=redis://redis:6379
-      - PROMETHEUS_URL=http://prometheus:9090
       - RAZORPAY_KEY=your-razorpay-key
       - RAZORPAY_SECRET=your-razorpay-secret
       - PORT=3000
     depends_on:
       - db
       - redis
-      - prometheus
 
   db:
     image: postgres
@@ -40,16 +37,6 @@ services:
     container_name: product-selling-platform-redis
     ports:
       - "6379:6379"
-
-  prometheus:
-    image: prom/prometheus
-    container_name: product-selling-platform-prometheus
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./prometheus.yaml:/etc/prometheus/prometheus.yml
-    networks:
-      - app-network
 
 volumes:
   pgdata:

@@ -16,7 +16,7 @@ const app = express();
 //middleware declaration
 app.use(limiter);
 app.use(helmet());
-app.use(middleware);
+// app.use(middleware);
 app.use(
   cors({
     origin: process.env.CORS_ORIGIN,
@@ -38,7 +38,7 @@ app.get(
 );
 
 import mainRouter from "./routes/index.route";
-import { middleware } from "./middlewares/prometheus.middleware";
+// import { middleware } from "./middlewares/prometheus.middleware";
 app.use("/api/v1", mainRouter);
 
 export default app;
